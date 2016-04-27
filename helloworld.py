@@ -10,4 +10,8 @@ w = Label(root, text="Hello, world!")
 w.pack()
 
 #make window appear
+#The program will stay in the event loop until we close the window. 
+#The event loop doesn’t only handle events from the user (such as 
+#mouse clicks and key presses) or the windowing system (such as 
+#redraw events and window configuration messages)
 root.mainloop()
