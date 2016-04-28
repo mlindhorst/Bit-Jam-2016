@@ -34,7 +34,7 @@ TEXT_DICTIONARY = {'.-': 'A',     '-...': 'B',   '-.-.': 'C',
 $ between words"""
 
 def translate_to_morse_code( text ):
-        morse_code = ""
+        morse_code = []
         
         capital_text = text.upper()         
         
@@ -43,7 +43,7 @@ def translate_to_morse_code( text ):
                 if( not character.isalnum() and not character.isspace() ):
                         return "Error text must be alpha numeric"            
                 morse_code += MORSE_DICTIONARY[character] + "|"
-        return morse_code
+        return list(morse_code)
         
 def translate_to_text( morse_code ):
         text = ""

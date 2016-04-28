@@ -1,6 +1,7 @@
 from tkinter import *
 import blinker
 import Loader
+import game_looper
 
 root = Tk()
 root.configure(background='light blue')
@@ -19,6 +20,8 @@ def hide_menu():
 
 def new_game():
     hide_menu()
+    looper = game_looper.Looper(root)    
+    looper.start()
 
 def load_game():
     hide_menu()
@@ -45,6 +48,10 @@ load = Button(menu_frame, text="Load Game", command=load_game)
 load.pack(side=TOP)
 credits = Button(menu_frame, text="Credits", command=show_credits)
 credits.pack(side=TOP)
+warning = Label(menu_frame, text="This game has the potential to induce SEIZURES for people with Photosensitive Epilepsy")
+warning.pack(side=BOTTOM)
+warning_title = Label(menu_frame, text="Seizure Warning", foreground="red", font="-weight bold")
+warning_title.pack(side=BOTTOM)
 
 AB = ['.', '-', '|', '-', '.', '.', '.']
 #blinker.flash(root, AB)
