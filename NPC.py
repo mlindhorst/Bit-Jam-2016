@@ -1,8 +1,9 @@
 from Loader import load_npcs
 
 class NPC:    
-    def __init__(self, name, responses):
+    def __init__(self, name, door_num, responses):
         self.name = name
+        self.door_num = door_num
         self.responses = responses
         
     def get_response(self, question_number):
