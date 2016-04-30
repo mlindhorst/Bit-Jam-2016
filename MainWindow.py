@@ -25,7 +25,9 @@ def new_game():
 
 def load_game():
     hide_menu()
-    current_load = Loader.load_save_state
+    current_load = Loader.load_save_state()
+    looper = game_looper.Looper(root)
+    looper.load(current_load.door)
     
 def show_credits():
     hide_menu()

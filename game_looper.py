@@ -20,6 +20,11 @@ class Looper(object):
     def start(self, door):
         self.game_blinker = blinker.Blinker(self.root)
         self.intro()
+        
+    def load(self, door_num):
+        self.game_blinker = blinker.Blinker(self.root)
+        self.current_level = door_num
+        self.begin_loop()
    
     def begin_loop(self, *args):
         self.root.unbind("<<FlashingDone>>")   
