@@ -1,4 +1,4 @@
-from Loader import load_npcs
+import Loader
 
 class NPC:    
     def __init__(self, name, door_num, responses):
@@ -7,11 +7,11 @@ class NPC:
         self.responses = responses
         
     def get_response(self, question_number):
-        return responses[question_number]
+        return self.responses[question_number]
         
 class NPCCreator:
     def __init__(self):
         print ('NPCs created.')
         
     def create_all(self):
-        return load_npcs()
+        return Loader.load_npcs()

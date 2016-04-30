@@ -1,3 +1,5 @@
+import NPC
+
 class Door:
     def __init__(self, name, key, npcs):
         self.name = name
@@ -6,13 +8,13 @@ class Door:
         
 class DoorCreator:
     doors = {
-        1 : Door('Communications', '1984', []),
-        2 : Door('Armory', '5712', []),
-        3 : Door('Entry', '9011', [])
+        '1' : Door('Communications', '1984', []),
+        '2' : Door('Armory', '5712', []),
+        '3' : Door('Entry', '9011', [])
     }
 
-    def __init__(self, npcs_list):
-        self.npcs_list = npcs_list
+    def __init__(self):
+        self.npcs_list = NPC.NPCCreator().create_all()
         self.create_doors()
         
     def create_doors(self):    

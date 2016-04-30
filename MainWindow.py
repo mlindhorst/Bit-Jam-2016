@@ -21,7 +21,7 @@ def hide_menu():
 def new_game():
     hide_menu()
     looper = game_looper.Looper(root)    
-    looper.start()
+    looper.start(0)
 
 def load_game():
     hide_menu()

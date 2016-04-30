@@ -1,8 +1,9 @@
 [
     {
         "name" : "Godric Albertsen",
+        "door_num" : "1",
         "responses" : { 
-            "1" : ["So many questions.", "2"]
+            "1" : ["So many questions", "2"]
         }
     }
 ]
