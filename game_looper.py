@@ -8,7 +8,7 @@ class Looper(object):
     def __init__(self, root):
         self.root = root
         self.done = 0 
-        self.inputer = input_manager.Inputer(root)  
+        self.inputer = input_manager.Inputer(root, self)  
         
     def intro(self):
         print("Level 0")
