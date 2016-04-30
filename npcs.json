@@ -1,9 +1,74 @@
 [
     {
-        "name" : "Godric Albertsen",
+        "name" : "SF",
+        "door_num" : "3",
+        "responses" : { 
+            "1" : ["Serifina Rothbauer", "2"],
+            "2" : ["2 years", "2"],
+            "3" : ["My partner and I have 7 pets", "2"],
+            "4" : ["Wuthering Heights", "2"],
+            "5" : ["The 3 Musketeers", "2"],
+            "6" : ["Just 1 of a flower", "2"]
+        }
+    },
+    {
+        "name" : "LS",
+        "door_num" : "2",
+        "responses" : { 
+            "1" : ["Lew Salomon", "1"],
+            "2" : ["Too damn long", "1"],
+            "3" : ["Just me", "2"],
+            "4" : ["Who reads these days", "2"],
+            "5" : ["The Princess Bride", "2"],
+            "6" : ["A bunch", "2"]
+        }
+    },
+    {
+        "name" : "GA",
+        "door_num" : "3",
+        "responses" : { 
+            "1" : ["Godric Albertsen", "2"],
+            "2" : ["13 years", "2"],
+            "3" : ["3", "2"],
+            "4" : ["The 2 Towers", "2"],
+            "5" : ["The 2 Towers", "2"],
+            "6" : ["8", "2"]
+        }
+    },
+    {
+        "name" : "AM",
         "door_num" : "1",
         "responses" : { 
-            "1" : ["So many questions", "2"]
+            "1" : ["Andreas Maynard", "0"],
+            "2" : ["Not even a year", "1"],
+            "3" : ["I think 7 total", "1"],
+            "4" : ["Probably 1984", "0"],
+            "5" : ["The Number 23", "0"],
+            "6" : ["None", "0"]
+        }
+    },
+    {
+        "name" : "HF",
+        "door_num" : "2",
+        "responses" : { 
+            "1" : ["Hepzibah De La Fuente", "1"],
+            "2" : ["About 6  years", "1"],
+            "3" : ["There is only my child and I", "2"],
+            "4" : ["Slaughterhouse 5", "1"],
+            "5" : ["12 Monkeys", "1"],
+            "6" : ["5", "1"]
+        }
+    },
+    {
+        "name" : "IG",
+        "door_num" : "3",
+        "responses" : { 
+            "1" : ["Izak Geisler", "2"],
+            "2" : ["Almost 1 year now", "2"],
+            "3" : ["4", "2"],
+            "4" : ["Issue 1 of Spiderman 2099", "2"],
+            "5" : ["1 Missed Call", "2"],
+            "6" : ["0 so far", "2"]
         }
     }
 ]
