@@ -20,6 +20,10 @@ class DoorCreator:
     def create_doors(self):    
         for npc in self.npcs_list:
             self.doors[npc.door_num].npcs.append(npc)
+            if int(npc.door_num) < 3:
+                self.doors['3'].npcs.append(npc)
+            if int(npc.door_num) < 2:
+                self.doors['2'].npcs.append(npc)
         
     def get_door(self, door_num):
         return self.doors[door_num]
