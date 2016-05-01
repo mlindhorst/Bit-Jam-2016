@@ -40,6 +40,7 @@ class Inputer(object):
         # Repeat Last Message Command - ctrl+r
         if(event.char == '\x12'):
             print("repeat!")
+            self.root.event_generate("<<Replay>>")
             self.current_input = ""
             return
         # Change NPCs Command - ctrl+c + callsign???
