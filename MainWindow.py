@@ -12,12 +12,18 @@ menu_frame = Frame(root, width=800, height=400)
 menu_frame.pack()
 credits_frame = Frame(root, width=800, height=400)
 
+splash = PhotoImage(file='BunkerEscapeSplash.gif')
+splash_container = Label(image=splash)
+splash_container.image = splash
+splash_container.pack()
 
 def back_to_menu():
-    credits_frame.pack_forget()
+    credits_frame.pack_forget()    
+    splash_container.pack()
     menu_frame.pack()
     
 def hide_menu():
+    splash_container.pack_forget()
     menu_frame.pack_forget() 
 
 def new_game():
@@ -58,7 +64,4 @@ warning.pack(side=BOTTOM)
 warning_title = Label(menu_frame, text="Seizure Warning", foreground="red", font="-weight bold")
 warning_title.pack(side=BOTTOM)
 
-AB = ['.', '-', '|', '-', '.', '.', '.']
-#blinker.flash(root, AB)
-#root.after(400, blinker.flash, root, AB)
 root.mainloop()
