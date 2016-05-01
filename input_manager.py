@@ -29,7 +29,7 @@ class Inputer(object):
             return
         # Save Command - ctrl+s
         if(event.char == '\x13'):
-            Saver.save(self.looper.current_level, self.looper.current_character)
+            Saver.save(self.looper.current_door, self.looper.current_character)
             self.current_input = ""
             return
         # Exit Command - esc
