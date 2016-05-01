@@ -8,13 +8,22 @@ class Inputer(object):
         self.done = 0
         self.root.bind("<Key>", self.key_pressed)
         self.current_input  = ""
+        self.current_callsign  = ""
+        self.changingNPC = False
 
     def key_pressed(self, event):
         print("pressed", repr(event.char))
         if(event.char == '\r'):
-             self.root.event_generate("<<InputEntered>>")
-             self.current_input = ""
-             return
+            if(self.changingNPC):         
+                self.root.event_generate("<<ChangeNPC>>")
+                self.current_callsign = ""
+                self.changingNPC = False
+                return
+            else:
+                self.root.event_generate("<<InputEntered>>")
+                self.current_input = ""
+                return
+        # Backspace = delete
         if(event.char == '\x08'):
             self.current_input = ""
             return
@@ -36,8 +45,13 @@ class Inputer(object):
         # Change NPCs Command - ctrl+c + callsign???
         if(event.char == '\x03'):
             print("change npcs!")
+            self.changingNPC = True
             self.current_input = ""
             return
-        self.current_input += event.char
-        print(self.current_input)
+        
+        if(self.changingNPC):
+            self.current_callsign += event.char
+        else:                
+            self.current_input += event.char
+            print(self.current_input)
   
