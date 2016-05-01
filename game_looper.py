@@ -5,6 +5,13 @@ import input_manager
 import copy
 
 class Looper(object):
+
+    dialogue = {
+        'intro' : 'sos',
+        'successfuldoor' : 'made it thru',
+        'faileddoor' : 'wrong key',
+        'endgame' : 'we escaped the bunker thank you'
+    }
     
     def __init__(self, root):
         self.root = root
@@ -12,8 +19,7 @@ class Looper(object):
         self.inputer = input_manager.Inputer(root, self)  
         self.game_blinker = blinker.Blinker(self.root)
         self.current_character = None    
-        self.current_message = {}        
-        
+        self.current_message = {}              
         
     def start(self, door):
         self.current_level = 1
@@ -22,33 +28,44 @@ class Looper(object):
         
     def intro(self):
         print("Level 0")
-        self.current_message = "SOS"        
+        self.current_message = self.dialogue['intro']        
         self.play_message()
         
-    def load(self, door_num):
-        #self.game_blinker = blinker.Blinker(self.root)
-        self.current_level = door_num
-        self.begin_loop()        
+        self.doorCreator = Door.DoorCreator()  
+        self.current_door = self.doorCreator.get_door(self.current_level) 
+        
+        self.current_character = self.current_door.npcs[0]                              
+        self.current_message = self.current_character.name + ' here'
+        self.play_message()
+        
+    def load(self, door_num, character):
+        self.current_level = door_num 
+        
+        self.doorCreator = Door.DoorCreator()    
+        self.current_door = self.doorCreator.get_door(self.current_level) 
+        for n in self.current_door.npcs:
+            if n.name.lower() == character.lower():
+                self.current_character = n
+        
+        self.begin_loop()             
    
     def begin_loop(self, *args):
         print("begining loop")
         self.root.unbind("<<FlashingDone>>") 
-        
-        doorCreator = Door.DoorCreator()
-        self.current_door = doorCreator.get_door(self.current_level)
-        #if(self.current_character == None):   
-        self.current_character = self.current_door.npcs[0]      
-            
+                  
         self.root.bind("<<InputEntered>>", self.parse_answer)
         self.root.bind("<<ChangeNPC>>", self.parse_change)
         self.root.bind("<<Replay>>", self.play_message)  
     
     def parse_change(self, *args):        
         call_sign = self.inputer.current_callsign
+        print('callsign: ', call_sign)
         for n in self.current_door.npcs:
-            if n.name == call_sign:
-                current_character = n             
-                begin_loop()
+            if n.name.lower() == call_sign.lower():
+                self.current_character = n  
+                self.current_message = call_sign + ' here'
+                self.play_message()            
+                self.begin_loop()
                 return             
         
     def parse_answer(self, *args):
@@ -78,9 +95,16 @@ class Looper(object):
                 
                 if(sorted_input == sorted_key):
                     self.current_level+=1
-                    print(self.current_level)
-                    #this should be transmitting good text, and then start of next door
+                    print(self.current_level)   
+                    if(self.current_level < 4):               
+                        self.current_message = self.dialogue['successfuldoor']
+                    else:
+                        self.current_message = self.dialogue['endgame']
+                    self.play_message()
                     self.begin_loop()
+                else:
+                    self.current_message = self.dialogue['faileddoor']
+                    self.play_message()
           
     def play_message(self, *args):
         print("playing: " + self.current_message)

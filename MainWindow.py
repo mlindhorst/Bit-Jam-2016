@@ -4,6 +4,7 @@ import Loader
 import game_looper
 
 root = Tk()
+root.wm_title('Bunker Escape!')
 root.configure(background='light blue')
 root.minsize(width=1024, height=600)
 
@@ -27,7 +28,7 @@ def load_game():
     hide_menu()
     current_load = Loader.load_save_state()
     looper = game_looper.Looper(root)
-    looper.load(current_load.door)
+    looper.load(current_load.door, current_load.person)
     
 def show_credits():
     hide_menu()

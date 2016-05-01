@@ -39,13 +39,11 @@ class Inputer(object):
             return
         # Repeat Last Message Command - ctrl+r
         if(event.char == '\x12'):
-            print("repeat!")
             self.root.event_generate("<<Replay>>")
             self.current_input = ""
             return
-        # Change NPCs Command - ctrl+c + callsign???
+        # Change NPCs Command - ctrl+c + callsign
         if(event.char == '\x03'):
-            print("change npcs!")
             self.changingNPC = True
             self.current_input = ""
             return
