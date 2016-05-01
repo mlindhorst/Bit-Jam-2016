@@ -36,8 +36,8 @@ class Looper(object):
         
         doorCreator = Door.DoorCreator()
         self.current_door = doorCreator.get_door(self.current_level)
-        if(self.current_character == None):   
-            self.current_character = self.current_door.npcs[0]      
+        #if(self.current_character == None):   
+        self.current_character = self.current_door.npcs[0]      
             
         self.root.bind("<<InputEntered>>", self.parse_answer)
         self.root.bind("<<ChangeNPC>>", self.parse_change)
@@ -77,8 +77,8 @@ class Looper(object):
                 sorted_key = "".join(current_key)
                 
                 if(sorted_input == sorted_key):
-                    self.current_door_num+=1
-                    print(self.current_door_num)
+                    self.current_level+=1
+                    print(self.current_level)
                     #this should be transmitting good text, and then start of next door
                     self.begin_loop()
           
