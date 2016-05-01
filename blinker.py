@@ -13,11 +13,11 @@ class Blinker(object):
     global OFF
     global ON
         
-    OFF_MSEC = 400
-    DOT_MSEC = 500
-    LETTER_MSEC = 600
-    WORD_MSEC = 1500
-    DASH_MSEC = 1500
+    OFF_MSEC = 240
+    DOT_MSEC = 300
+    LETTER_MSEC = 450
+    WORD_MSEC = 900
+    DASH_MSEC = 900
     OFF = 'light blue'
     ON = 'maroon'
     
@@ -53,7 +53,7 @@ class Blinker(object):
     def dash(self, signals): 
         self.root.configure(background = ON)
         self.root.after(DASH_MSEC, self.flash, signals)
-        winsound.PlaySound('beep-dash.wav', winsound.SND_FILENAME | winsound.SND_ASYNC )
+        winsound.PlaySound('beep-dash.wav', winsound.SND_FILENAME | winsound.SND_ASYNC )        
         
     def dot(self, signals): 
         self.root.configure(background = ON)        

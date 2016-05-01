@@ -48,3 +48,4 @@ Temporary Items
 .vscode/tasks.json
 *.pyc
 save.json
+__pycache__/Translator.cpython-35.pyc
