@@ -52,6 +52,10 @@ class Looper(object):
     def begin_loop(self, *args):
         print("begining loop")
         self.root.unbind("<<FlashingDone>>") 
+        
+        if(self.current_level >= 4):
+            print("ENDING")
+            self.root.event_generate("<<ReturnToMenu>>")
                   
         self.root.bind("<<InputEntered>>", self.parse_answer)
         self.root.bind("<<ChangeNPC>>", self.parse_change)
@@ -101,7 +105,6 @@ class Looper(object):
                     else:
                         self.current_message = self.dialogue['endgame']
                     self.play_message()
-                    self.begin_loop()
                 else:
                     self.current_message = self.dialogue['faileddoor']
                     self.play_message()

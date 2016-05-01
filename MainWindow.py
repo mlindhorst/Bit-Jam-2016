@@ -12,6 +12,7 @@ menu_frame = Frame(root, width=800, height=400)
 menu_frame.pack()
 credits_frame = Frame(root, width=800, height=400)
 
+
 def back_to_menu():
     credits_frame.pack_forget()
     menu_frame.pack()
@@ -30,16 +31,17 @@ def load_game():
     looper = game_looper.Looper(root)
     looper.load(current_load.door, current_load.person)
     
-def show_credits():
+def show_credits(*args):
     hide_menu()
     credits_frame.pack()
 
+root.bind("<<ReturnToMenu>>", show_credits)
 #credits
 programmers_title = Label(credits_frame, text="Programmers: Melynda Lindhorst, Sarah Ripley, Jason Kallman, Jonathan Meyer")
 programmers_title.pack(side=TOP)
 writer_title = Label(credits_frame, text="Writer/Illustrator: Kristina Balay")
 writer_title.pack(side=TOP)
-sound_title = Label(credits_frame, text="Sounds Provided By: http://www.soundjay.com/")
+sound_title = Label(credits_frame, text="Sounds Provided By: http://www.audacityteam.org/")
 sound_title.pack(side=TOP)
 back_button = Button(credits_frame, text="Back", command=back_to_menu)
 back_button.pack(side=TOP)
